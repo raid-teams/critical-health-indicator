@@ -4,6 +4,19 @@ A 7 Days to Die Modlet that causes the vanilla health bar to flash when you shou
 
 ![demo](media/critical-health-indicator-demo.gif?raw=true)
 
+## Support
+
+Environment | Supported | Info
+--- | :---: | ---
+Local | Yes | Just install it to your local `Mods` folder (see below)
+Dedicated Server | Yes | Players will not have to download this mod if it's installed on your server
+
+## How to Install
+
+1. Download the latest release of this mod by going to the [Latest Releases page](https://github.com/raid-teams/critical-health-indicator/releases/latest) and clicking the download link there for `critical-health-indicator-[version].zip`
+1. Navigate to your 7 Days to Die install directory in either your Client or Server and create a new folder here named `Mods` (if it isn't already created)
+1. Extract the downloaded `critical-health-indicator-[version].zip` file into this `Mods` folder and extra
+
 ## What's it doing under the covers?
 
 - Adds new hidden buff on startup, respawn, or death named `buffCriticalHealthIndicator` that is not removed on death or restart.
