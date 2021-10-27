@@ -1,0 +1,9 @@
+<config>
+    <append xpath="/entity_classes/entity_class[@name='playerMale']">
+        <property name="Buffs" value="buffCriticalHealthIndicator"/>
+        <effect_group>
+            <triggered_effect trigger="onSelfEnteredGame" action="AddBuff" target="self" buff="buffCriticalHealthIndicator"/>
+            <triggered_effect trigger="onSelfRespawn" action="AddBuff" target="self" buff="buffCriticalHealthIndicator"/>
+        </effect_group>
+    </append>
+</config>

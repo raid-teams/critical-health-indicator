@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml>
+	<ModInfo>
+		<Name value="critical-health-indicator" />
+		<Description value="7 Days to Die Modlet that causes the vanilla health bar to flash when health is low" />
+		<Author value="Jonathan Robertson" />
+		<Version value="1.0.0" />
+		<Website value="https://github.com/raid-teams/critical-health-indicator" />
+	</ModInfo>
+</xml>

@@ -1,0 +1,49 @@
+<config>
+    <append xpath="/buffs">
+		<buff name="buffCriticalHealthIndicator" remove_on_death="false" hidden="true">
+			<stack_type value="ignore" />
+			<duration value="0" />
+			<update_rate value=".05" />
+
+			<!-- initialize -->
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$healthColor" operation="set" value="255" />
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$healthMod" operation="set" value=".25" />
+			</effect_group>
+
+			<!-- increment variable -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar="$healthMod" operation="NotEquals" value="0" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$healthColor" operation="add" value="@$healthMod" />
+			</effect_group>
+
+			<!-- toggle adjustment direction -->
+			<effect_group>
+				<requirements compare_type="or">
+					<requirement name="CVarCompare" cvar="$healthColor" operation="LTE" value="100" />
+					<requirement name="CVarCompare" cvar="$healthColor" operation="GTE" value="255" />
+				</requirements>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$healthMod" operation="multiply" value="-1" />
+			</effect_group>
+
+			<!-- turn off visual warning -->
+			<effect_group>
+				<requirements>
+					<requirement name="CVarCompare" cvar="$healthMod" operation="NotEquals" value="0" />
+					<requirement name="StatComparePercCurrentToMax" stat="health" operation="GTE" value=".25" />
+				</requirements>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$healthMod" operation="set" value="0" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$healthColor" operation="set" value="255" />
+			</effect_group>
+
+			<!-- turn on visual warning -->
+			<effect_group>
+				<requirements>
+					<requirement name="CVarCompare" cvar="$healthMod" operation="Equals" value="0" />
+					<requirement name="StatComparePercCurrentToMax" stat="health" operation="LT" value=".25" />
+				</requirements>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$healthMod" operation="set" value="-81" />
+			</effect_group>
+		</buff>
+    </append>
+</config>
